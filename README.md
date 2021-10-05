@@ -2,7 +2,7 @@
 
 - hip: 28
 - title: Delegated KYC Policies in HTS
-- author: Paul Madsen - paul@calaxy.com
+- author: Cooper & Paul @ Calaxy 
 - type: Standards Track
 - category: Application
 - status: Draft
@@ -12,7 +12,7 @@
 
 ## Abstract
 
-This HIP proposes an extension to the HTC mechanism by which the KYC status of a given Hedera account for a given HTS token can be indicated. Rather than actively managing the KYC status of accounts (using their own KYC key to set the KYC flag on an account), a token admin can delegate that burden to the admin of some other token. If an when the admin of that delegatee token sets the KYC status of a given account to true, the delegator token effectively inherits that status. When one token has delegated the KYC status to another, Hedera nodes would interpret the KYC
+This HIP proposes an extension to the HTS mechanism by which the KYC status of a given Hedera account for a given HTS token can be indicated. Rather than actively managing the KYC status of accounts (using their own KYC key to set the KYC flag on an account), a token admin can delegate that burden to  and responsibility to the admin of some other token. If and when the admin of that delegatee token sets the KYC status of a given account to 'true', the delegator token effectively inherits that status. 
 
 ## Motivitation
 
@@ -22,19 +22,28 @@ This HIP proposes that, for a given Hedera account, one token would be able to e
 
 ## Rationale
 
+The current model of each token managing KYC status for a given Hedera account separately implies
+
+- a KYC management burden on all tokens that may be difficult for some token admins to assume. 
+- possibly redundant KYC checks on the owners of Hedera accounts. Even if an account owner has gone through a KYC check for one token, that fact and implicit approval may not be transferable to another token - with associated negative usability.
 
 ## Specification
 
-If a token delegates to another, 
+When creating or modifying a token, admins can optionally stipulate a 'KYCTarget' parameter with a value of an existing token identifier. 
 
-If a token delgates to another, the delegator token MUST not have its own KYC key.
+If a token delegates KYC status to another token, the delegator token MUST not have its own KYC key.
 
+If a token delegates KYC status to another token, the delegatee token MUST have a KYC key.
+
+If a token delegates KYC status to another token, Hedera nodes MUST interpret the KYC status of the delegator token as identical to that of the delgatee token.
+
+If a token does not delegate KYC status to another token, .....
 
 ## Backwards Compatibility
 
 ## Security Implications
 
-There are no direct security implications, since the uniresolver only exposes the resolution of DID documents trough an API backend that integrates with the existing driver. This means that there is no possibility that mutable actions on data can take place.
+?????
 
 ## How to Teach This
 N/A
