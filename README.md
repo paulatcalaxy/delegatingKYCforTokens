@@ -12,7 +12,7 @@
 
 ## Abstract
 
-This HIP proposes an extension to the HTS mechanism by which the KYC status of a given Hedera account for a given HTS token can be indicated. Rather than actively managing the KYC status of accounts (using their own KYC key to set the KYC flag on an account), a token admin can delegate that burden to  and responsibility to the admin of some other token. If and when the admin of that delegatee token sets the KYC status of a given account to 'true', the delegator token effectively inherits that status. 
+This HIP proposes an extension to the HTS mechanism by which the KYC status of a given Hedera account for a given HTS token can be indicated. Rather than actively managing the KYC status of accounts (using their own KYC key to set the KYC flag on an account [1, 2]), a token admin can delegate that burden to  and responsibility to the admin of some other token. If and when the admin of that delegatee token sets the KYC status of a given account to 'true', the delegator token effectively inherits that status. 
 
 ## Motivitation
 
@@ -41,19 +41,29 @@ If a token does not delegate KYC status to another token, .....
 
 ## Backwards Compatibility
 
+There are no known backwards comatibility considerations that'd impact implementation. 
+
+All previously created tokens could retain their existing KYC configurations, and those enabled with controlled mutability[3] (i.e. admin KYC keys) could update to stipulate a KYCTarget to delegate the management to.
+
 ## Security Implications
 
-?????
+Security implications are generally restricted to application-layer considerations, such as - what if you delegate KYC to an entity who then improperly manages their own process(es)? By definition, when delegating the "KYCTarget", a token issuer is delegating their own "KYC Key" security/management to another entity. Thus application developers would want to ensure they have a good relationship, fallback considerations, etc., when choosing a delegate.  
 
 ## How to Teach This
-N/A
+Instead of each application developer having to stand up a sufficient verification system, they can "piggyback" onto others. 
+
+For example, if a Hedera Governing Council member eventually offered identity verification services on-chain for a token, other projects/tokens could inherit (e.g. piggyback on) their identity verification. 
 
 ## Reference Implementation
-N/A
+TBD
 
 ## Rejected Ideas
 N/A
 
 ## Open Issues
+N/A
 
 ## References
+1. [Hedera documation - Enable KYC account flag](https://docs.hedera.com/guides/docs/sdks/tokens/enable-kyc-account-flag-1)
+2. [Hedera documentation - Disable KYC account flag](https://docs.hedera.com/guides/docs/sdks/tokens/disable-kyc-account-flag)
+3. [Hedera blog - Controlled Mutability, by Paul Madsen](https://hedera.com/blog/code-is-law-but-what-if-the-law-needs-to-change)
