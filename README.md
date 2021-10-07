@@ -4,7 +4,7 @@
 - title: Delegated KYC Policies in HTS
 - author: Cooper & Paul @ Calaxy 
 - type: Standards Track
-- category: Application
+- category: API
 - status: Draft
 - created: 2021-10-10
 - discussions-to: 
