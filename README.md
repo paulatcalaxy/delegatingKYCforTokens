@@ -1,6 +1,6 @@
-# Delegated KYC Policies in HTS
+# Delegating KYC For Tokens
 
-- hip: 28
+- hip: 0000
 - title: Delegated KYC Policies in HTS
 - author: Cooper & Paul @ Calaxy 
 - type: Standards Track
@@ -14,7 +14,7 @@
 
 This HIP proposes an extension to the HTS mechanism by which the KYC status of a given Hedera account for a given HTS token can be indicated. Rather than actively managing the KYC status of accounts (using their own KYC key to set the KYC flag on an account [1, 2]), a token admin can delegate that burden and responsibility to the admin of some other token. If and when the admin of that delegatee token sets the KYC status of a given account to 'true', the delegator token effectively inherits that status. 
 
-Note: HTS uses 'KYC' as a shorthand for some sort of approval process that Hedera accounts must undergo before trading in a token and not specifically the 'Know Your Customer' interpretation of the financial world. 
+Note: HTS uses 'KYC' as a shorthand for some sort of approval process that Hedera accounts must undergo before trading in a token and not specifically the 'Know Your Customer' interpretation of the financial world. This HIP ollows that interpreation.
 
 ## Motivitation
 
