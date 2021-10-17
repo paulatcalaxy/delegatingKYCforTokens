@@ -14,6 +14,8 @@
 
 This HIP proposes an extension to the HTS mechanism by which the KYC status of a given Hedera account for a given HTS token can be indicated. Rather than actively managing the KYC status of accounts (using their own KYC key to set the KYC flag on an account [1, 2]), a token admin can delegate that burden and responsibility to the admin of some other token. If and when the admin of that delegatee token sets the KYC status of a given account to 'true', the delegator token effectively inherits that status. 
 
+Of course, relying merely on some other token's KYC flag on a particular Hedera account does not provide to the first token the actual details, e.g. the account owner's identity details. Consequently, this model may not be appropriate for all use cases. It would be most applicable to scenarios where 1) a number of tokens are 'federated' and there exists some other channel by which identity details would flow as necessary or 2) the KYC approval is for some simple binary check like 'over 18?'.   
+
 Note: HTS uses 'KYC' as a shorthand for some sort of approval process that Hedera accounts must undergo before trading in a token and not specifically the 'Know Your Customer' interpretation of the financial world. This HIP allows that interpretation and should not be read as an indication of Calaxy's plans/requirements for social tokens, NFTs, or otherwise - but rather functionality the Calaxy team believes to be valuable for the Hedera ecosystem.
 
 ## Motivitation
